@@ -1,251 +1,502 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- META BÁSICO -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zh relojería | Relojes de Lujo</title>
-  <meta name="description" content="Relojería ZH en San Felipe. Venta y reparación de relojes de lujo y joyas.">
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Bootstrap Icons (solo íconos, no todo Bootstrap) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-  <!-- Animate.css para animaciones -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <!-- Fuentes elegantes -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto&display=swap" rel="stylesheet">
-  <!-- Estilos personalizados para modo noche -->
-  <link rel="stylesheet" href="estilo_noche.css">
-  <script>
-    // Alterna modo noche y guarda preferencia en localStorage
-    function toggleDarkMode() {
-      document.body.classList.toggle('dark');
-      localStorage.setItem('zh-dark', document.body.classList.contains('dark'));
-    }
-    // Aplica modo noche si el usuario lo eligió antes
-    window.onload = function() {
-      if (localStorage.getItem('zh-dark') === 'true') {
-        document.body.classList.add('dark');
-      }
-    }
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Relojería ZH | Catálogo de Relojes en San Felipe</title>
+  <meta name="description" content="Relojería ZH en San Felipe. Catálogo de relojes de lujo: clásicos, deportivos y minimalistas. Reparación y mantenimiento profesional.">
+  <link rel="canonical" href="https://tusitio.cl/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Relojería ZH | Catálogo de Relojes en San Felipe" />
+  <meta property="og:description" content="Catálogo actualizado de relojes. Encuentra tu modelo ideal en Relojería ZH." />
+  <meta property="og:image" content="https://tusitio.cl/img/logo-pro.png" />
+  <meta property="og:url" content="https://tusitio.cl/" />
+
+  <!-- JSON-LD: Negocio local + algunos modelos (catálogo) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"JewelryStore",
+    "name":"Relojería ZH",
+    "image":"https://tusitio.cl/img/logo-pro.png",
+    "url":"https://tusitio.cl/",
+    "address":{"@type":"PostalAddress","addressLocality":"San Felipe","addressRegion":"Valparaíso","addressCountry":"CL"},
+    "geo":{"@type":"GeoCoordinates","latitude":-32.7495647,"longitude":-70.727704},
+    "sameAs":[]
+  }
   </script>
-  <style>
-    /* Ejemplo de reutilización de estilos con Tailwind @apply (si usas Tailwind CLI o PostCSS) */
-    /* .card-reloj { @apply bg-gray-100 rounded-lg shadow p-6 flex flex-col items-center hover:shadow-xl transition cursor-pointer; } */
-    /* Si solo usas CDN, puedes dejar las clases repetidas o crear una clase en tu CSS tradicional */
-  </style>
+
+  <!-- FUENTES -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Animate.css (animaciones tipo “bootstrap vibes”) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <!-- Swiper (Carrusel) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"/>
+
+  <!-- CSS propio -->
+  <link rel="stylesheet" href="estilo.css" />
 </head>
-<body class="bg-gray-50 text-gray-900 font-['Roboto'] transition-colors duration-300">
+<body class="text-gray-900 bg-white selection:bg-yellow-300 selection:text-black">
 
   <!-- HEADER -->
-  <header class="bg-white shadow flex items-center relative animate__animated animate__fadeInDown">
-    <div class="container mx-auto flex justify-between items-center py-4 px-6">
-      <!-- Logo y nombre con gradiente dorado -->
-      <div class="flex items-center gap-3">
-        <img src="img/logo pro.png" alt="Logo Relojería ZH" class="h-12 w-12 object-contain rounded-full border-2 border-yellow-400 shadow-md" loading="lazy">
-        <h1 class="text-4xl md:text-5xl font-serif font-extrabold text-gray-900 tracking-wide drop-shadow-lg bg-gradient-to-r from-yellow-400 via-yellow-100 to-yellow-400 bg-clip-text text-transparent animate__animated animate__fadeInLeft">
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 py-3 flex items-center justify-between">
+      <a href="#" class="flex items-center gap-3 group" aria-label="Inicio Relojería ZH">
+        <img src="img/logo pro.png" alt="Logo Relojería ZH" class="h-12 w-12 rounded-full border border-yellow-400 shadow object-cover"/>
+        <span class="text-2xl sm:text-3xl font-bold tracking-wide text-yellow-500 group-hover:text-yellow-400 transition">
           Relojería ZH
-        </h1>
-      </div>
-      <!-- Menú de navegación -->
-      <nav aria-label="Navegación principal">
-        <ul class="flex gap-6 text-lg font-medium">
-          <li><a href="#" class="hover:text-blue-600 transition">Inicio</a></li>
-          <li><a href="#coleccion" class="hover:text-blue-600 transition">Marcas</a></li>
-          <li><a href="#sobre-nosotros" class="hover:text-blue-600 transition">Nosotros</a></li>
-          <li><a href="#servicios" class="hover:text-blue-600 transition">Servicios</a></li>
-          <li><a href="#contacto" class="hover:text-blue-600 transition">Contacto</a></li>
-        </ul>
+        </span>
+      </a>
+
+      <!-- Menú escritorio -->
+      <nav class="hidden md:flex items-center gap-8 font-medium">
+        <a href="#inicio" class="hover:text-yellow-500">Inicio</a>
+        <a href="#catalogo" class="hover:text-yellow-500">Catálogo</a>
+        <a href="#colecciones" class="hover:text-yellow-500">Colecciones</a>
+        <a href="#ubicacion" class="hover:text-yellow-500">Ubicación</a>
+        <a href="#contacto" class="hover:text-yellow-500">Contacto</a>
+      </nav>
+
+      <!-- Hamburguesa -->
+      <button id="menuBtn" class="md:hidden text-3xl" aria-label="Abrir menú"><i class="bi bi-list"></i></button>
+    </div>
+
+    <!-- Menú móvil -->
+    <div id="mobileMenu" class="hidden md:hidden border-t border-gray-100">
+      <nav class="max-w-7xl mx-auto px-4 lg:px-8 py-3 flex flex-col gap-3">
+        <a href="#inicio" class="py-2 hover:text-yellow-500">Inicio</a>
+        <a href="#catalogo" class="py-2 hover:text-yellow-500">Catálogo</a>
+        <a href="#colecciones" class="py-2 hover:text-yellow-500">Colecciones</a>
+        <a href="#ubicacion" class="py-2 hover:text-yellow-500">Ubicación</a>
+        <a href="#contacto" class="py-2 hover:text-yellow-500">Contacto</a>
       </nav>
     </div>
-    <!-- Botón modo noche flotante, siempre visible -->
-    <button onclick="toggleDarkMode()" aria-label="Alternar modo noche"
-      class="fixed top-6 right-6 z-50 px-4 py-2 rounded-full border border-gray-300 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:text-yellow-400 dark:border-gray-600 transition shadow-lg animate__animated animate__fadeIn">
-      <span class="hidden dark:inline"><i class="bi bi-moon-stars-fill"></i></span>
-      <span class="inline dark:hidden"><i class="bi bi-brightness-high-fill"></i></span>
-    </button>
   </header>
 
-  <!-- HERO PRINCIPAL: Imagen de fondo sin difuminar y texto centrado -->
-  <section
-    class="relative w-full h-[60vh] min-h-[350px] flex items-center justify-center overflow-hidden"
-    style="background-image: url('https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqhSd_50rBqnwajyGHG1fsQW8aQ5c-HUOuQG52uKSetv3Q1H1Y-NaNFjEIiGah-Lb9nYAjhj0L42Y0Np5FUwwDtcT5JtAEryrztCHOr-NRCV9ci5kn4ympx49RdNetNHoxXRurA=s680-w680-h510-rw'); background-size: cover; background-position: center;">
-    <!-- Imagen difuminada con pseudo-fondo -->
-    <div class="absolute inset-0">
-      <div class="w-full h-full blur-sm" style="background-image: url('https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqhSd_50rBqnwajyGHG1fsQW8aQ5c-HUOuQG52uKSetv3Q1H1Y-NaNFjEIiGah-Lb9nYAjhj0L42Y0Np5FUwwDtcT5JtAEryrztCHOr-NRCV9ci5kn4ympx49RdNetNHoxXRurA=s680-w680-h510-rw'); background-size: cover; background-position: center;"></div>
-      <div class="absolute inset-0 bg-black bg-opacity-40"></div>
-    </div>
-    <div class="relative z-10 text-center text-white w-full flex flex-col items-center">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4 drop-shadow-lg">Relojes que definen tu estilo</h2>
-      <p class="mb-6 text-lg md:text-xl drop-shadow">Descubre la perfección del tiempo</p>
-      <a href="#coleccion" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition shadow-lg">Ver colección</a>
-    </div>
-  </section>
+  <main id="inicio">
+    <!-- HERO: CARRUSEL 5 SLOTS (mantengo tus 3 y duplico 2) -->
+    <section class="relative">
+      <div class="swiper heroSwiper h-[65vh] min-h-[460px]">
+        <div class="swiper-wrapper">
 
-  <!-- COLECCIÓN DE MARCAS -->
-  <section id="coleccion" class="py-16 bg-white">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-10 animate__animated animate__fadeInDown">Nuestra Colección</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        <!-- Cada marca es un bloque clickeable con animación -->
-        <div class="bg-gray-100 rounded-lg shadow p-6 flex flex-col items-center hover:shadow-2xl transition cursor-pointer animate__animated animate__pulse hover:animate__tada"
-             role="button" tabindex="0" aria-label="Ver relojes Casio" onclick="window.location.href='casio.html'">
-          <img src="https://relojeando.cl/cdn/shop/files/353436883_676656754475140_9184453992239516042_n.jpg?v=1710881918"
-               alt="Casio"
-               class="h-32 w-32 object-cover rounded-lg border-2 border-yellow-400 shadow mb-4 transition-transform duration-300 hover:scale-110"
-               loading="lazy" />
-          <h3 class="text-xl font-semibold mb-2">Casio</h3>
-          <p class="mb-2 text-gray-600">Innovación y funcionalidad japonesa.</p>
-          <span class="text-lg font-bold text-blue-700">Ver más</span>
+          <!-- Slide 1 (tu imagen) -->
+          <div class="swiper-slide">
+            <div class="slide-bg" style="background-image:url('img/foto carrusel 1.jpg')"></div>
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+              <h1 class="hero-title">Relojes que definen tu estilo</h1>
+              <p class="hero-subtitle">Descubre la perfección del tiempo</p>
+            </div>
+          </div>
+
+          <!-- Slide 2 (tu imagen) -->
+          <div class="swiper-slide">
+            <div class="slide-bg" style="background-image:url('img/carrusel 2.jpg')"></div>
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+              <h2 class="hero-title">Elegancia en cada detalle</h2>
+              <p class="hero-subtitle">Calidad que perdura en el tiempo</p>
+            </div>
+          </div>
+
+          <!-- Slide 3 (tu imagen) -->
+          <div class="swiper-slide">
+            <div class="slide-bg" style="background-image:url('img/carrusel 3.jpg')"></div>
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+              <h2 class="hero-title">Diseño y precisión</h2>
+              <p class="hero-subtitle">Combinamos arte y tecnología</p>
+            </div>
+          </div>
+
+          <!-- Slide 4 (duplica 1 para completar 5) -->
+          <div class="swiper-slide">
+            <div class="slide-bg" style="background-image:url('img/foto carrusel 1.jpg')"></div>
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+              <h2 class="hero-title">Colecciones atemporales</h2>
+              <p class="hero-subtitle">Calidad y tradición</p>
+            </div>
+          </div>
+
+          <!-- Slide 5 (duplica 2 para completar 5) -->
+          <div class="swiper-slide">
+            <div class="slide-bg" style="background-image:url('img/carrusel 2.jpg')"></div>
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+              <h2 class="hero-title">Tu reloj ideal te espera</h2>
+              <p class="hero-subtitle">Encuentra el que va contigo</p>
+            </div>
+          </div>
         </div>
-        <div class="bg-gray-100 rounded-lg shadow p-6 flex flex-col items-center hover:shadow-2xl transition cursor-pointer animate__animated animate__pulse hover:animate__tada"
-             role="button" tabindex="0" aria-label="Ver relojes Cartier" onclick="window.location.href='cartier.html'">
-          <img src="https://www.cartier.com/content/images/cms/ycm/resource/blob/772654/138370a3875cff16528ee77e33bed4ae/hero-fullscreen-picture-data.jpg/w1280.jpg"
-               alt="Cartier"
-               class="h-32 w-32 object-cover rounded-lg border-2 border-yellow-400 shadow mb-4 transition-transform duration-300 hover:scale-110"
-               loading="lazy" />
-          <h3 class="text-xl font-semibold mb-2">Cartier</h3>
-          <p class="mb-2 text-gray-600">Lujo y elegancia francesa.</p>
-          <span class="text-lg font-bold text-blue-700">Ver más</span>
-        </div>
-        <div class="bg-gray-100 rounded-lg shadow p-6 flex flex-col items-center hover:shadow-2xl transition cursor-pointer animate__animated animate__pulse hover:animate__tada"
-             role="button" tabindex="0" aria-label="Ver relojes Rolex" onclick="window.location.href='rolex.html'">
-          <img src="https://magazine.chrono24.com/cdn-cgi/image/f=auto,metadata=none,fit=cover,q=65,w=1190,h=595,dpr=2.0/2022/04/Rolex-Opinion-21-scaled.jpg"
-               alt="Rolex"
-               class="h-32 w-32 object-cover rounded-lg border-2 border-yellow-400 shadow mb-4 transition-transform duration-300 hover:scale-110"
-               loading="lazy" />
-          <h3 class="text-xl font-semibold mb-2">Rolex</h3>
-          <p class="mb-2 text-gray-600">Símbolo de prestigio y precisión suiza.</p>
-          <span class="text-lg font-bold text-blue-700">Ver más</span>
-        </div>
-        <div class="bg-gray-100 rounded-lg shadow p-6 flex flex-col items-center hover:shadow-2xl transition cursor-pointer animate__animated animate__pulse hover:animate__tada"
-             role="button" tabindex="0" aria-label="Ver relojes Seiko" onclick="window.location.href='seiko.html'">
-          <img src="https://rometsch.cl/cdn/shop/files/reloj-seiko-5-sports-srpk13k1-160401_1800x.jpg?v=1715630749"
-               alt="Seiko"
-               class="h-32 w-32 object-cover rounded-lg border-2 border-yellow-400 shadow mb-4 transition-transform duration-300 hover:scale-110"
-               loading="lazy" />
-          <h3 class="text-xl font-semibold mb-2">Seiko</h3>
-          <p class="mb-2 text-gray-600">Tradición y tecnología japonesa.</p>
-          <span class="text-lg font-bold text-blue-700">Ver más</span>
-        </div>
-        <div class="bg-gray-100 rounded-lg shadow p-6 flex flex-col items-center hover:shadow-2xl transition cursor-pointer animate__animated animate__pulse hover:animate__tada"
-             role="button" tabindex="0" aria-label="Ver relojes Omega" onclick="window.location.href='omega.html'">
-          <img src="https://relojesclub.cl/wp-content/uploads/2023/12/Omega-Seamaster-300M-212.30.41.61.01.001.jpeg"
-               alt="Omega"
-               class="h-32 w-32 object-cover rounded-lg border-2 border-yellow-400 shadow mb-4 transition-transform duration-300 hover:scale-110"
-               loading="lazy" />
-          <h3 class="text-xl font-semibold mb-2">Omega</h3>
-          <p class="mb-2 text-gray-600">Excelencia suiza y legado histórico.</p>
-          <span class="text-lg font-bold text-blue-700">Ver más</span>
-        </div>
-        <div class="bg-gray-100 rounded-lg shadow p-6 flex flex-col items-center hover:shadow-2xl transition cursor-pointer animate__animated animate__pulse hover:animate__tada"
-             role="button" tabindex="0" aria-label="Ver relojes Tag Heuer" onclick="window.location.href='tagheuer.html'">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0i5-shXLVjvE5OrP_VxDh4fTY9yxPMNCAww&s"
-               alt="Tag Heuer"
-               class="h-32 w-32 object-cover rounded-lg border-2 border-yellow-400 shadow mb-4 transition-transform duration-300 hover:scale-110"
-               loading="lazy" />
-          <h3 class="text-xl font-semibold mb-2">Tag Heuer</h3>
-          <p class="mb-2 text-gray-600">Deporte y precisión suiza.</p>
-          <span class="text-lg font-bold text-blue-700">Ver más</span>
-        </div>
-        <div class="bg-gray-100 rounded-lg shadow p-6 flex flex-col items-center hover:shadow-2xl transition cursor-pointer animate__animated animate__pulse hover:animate__tada"
-             role="button" tabindex="0" aria-label="Ver relojes Tissot" onclick="window.location.href='tissot.html'">
-          <img src="https://caballeroarmado.cl/cdn/shop/files/tissot-seastar-1000-powermatic-80-44956332294395.png?v=1731828390&width=2040"
-               alt="Tissot"
-               class="h-32 w-32 object-cover rounded-lg border-2 border-yellow-400 shadow mb-4 transition-transform duration-300 hover:scale-110"
-               loading="lazy" />
-          <h3 class="text-xl font-semibold mb-2">Tissot</h3>
-          <p class="mb-2 text-gray-600">Innovación y tradición suiza.</p>
-          <span class="text-lg font-bold text-blue-700">Ver más</span>
-        </div>
-        <div class="bg-gray-100 rounded-lg shadow p-6 flex flex-col items-center hover:shadow-2xl transition cursor-pointer animate__animated animate__pulse hover:animate__tada"
-             role="button" tabindex="0" aria-label="Ver relojes Citizen" onclick="window.location.href='citizen.html'">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReGD_bniAYPtbQJ0-Cpm6c7Ak_Tok_QfWylg&s"
-               alt="Citizen"
-               class="h-32 w-32 object-cover rounded-lg border-2 border-yellow-400 shadow mb-4 transition-transform duration-300 hover:scale-110"
-               loading="lazy" />
-          <h3 class="text-xl font-semibold mb-2">Citizen</h3>
-          <p class="mb-2 text-gray-600">Tecnología Eco-Drive y diseño japonés.</p>
-          <span class="text-lg font-bold text-blue-700">Ver más</span>
+
+        <!-- Controles -->
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </section>
+
+    <!-- COLECCIONES / FILTROS (inspirado en Festina) -->
+    <section id="colecciones" class="max-w-7xl mx-auto px-4 lg:px-8 py-12">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
+        <h2 class="text-3xl font-bold">Colecciones</h2>
+        <div class="text-sm text-gray-500">Catálogo informativo (sin compra en línea)</div>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-2">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="clasico">Clásico</button>
+        <button class="filter-btn" data-filter="deportivo">Deportivo</button>
+        <button class="filter-btn" data-filter="minimalista">Minimalista</button>
+        <button class="filter-btn" data-filter="automatico">Automático</button>
+        <button class="filter-btn" data-filter="cuero">Correa de Cuero</button>
+        <button class="filter-btn" data-filter="acero">Acero</button>
+      </div>
+    </section>
+
+    <!-- CATÁLOGO DE MODELOS (GRID) -->
+    <section class="max-w-7xl mx-auto px-4 py-14 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+  <!-- Card CAT -->
+  <article class="card animate__animated animate__fadeIn bg-gray-100 rounded-lg shadow p-6 flex flex-col items-center hover:shadow-2xl transition cursor-pointer animate__pulse hover:animate__tada"
+           role="button" tabindex="0" aria-label="Ver relojes CAT" onclick="window.location.href='cat.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Caterpillar_logo.svg/2560px-Caterpillar_logo.svg.png" 
+         alt="CAT" 
+         class="h-32 w-32 object-contain rounded-lg border-2 border-yellow-400 shadow mb-4 transition-transform duration-300 hover:scale-110" 
+         loading="lazy" />
+    <h3 class="text-xl font-semibold mb-2">CAT</h3>
+    <p class="mb-2 text-gray-600 text-center">Robustez y resistencia para todo terreno.</p>
+    <span class="text-lg font-bold text-blue-700">Ver más</span>
+  </article>
+
+  <!-- Card Seiko -->
+  <article class="card animate__animated animate__fadeIn bg-gray-100 rounded-lg shadow p-6 flex flex-col items-center hover:shadow-2xl transition cursor-pointer animate__pulse hover:animate__tada"
+           role="button" tabindex="0" aria-label="Ver relojes Seiko" onclick="window.location.href='seiko.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/1c/Seiko_logo.svg" 
+         alt="Seiko" 
+         class="h-32 w-32 object-contain rounded-lg border-2 border-yellow-400 shadow mb-4 transition-transform duration-300 hover:scale-110" 
+         loading="lazy" />
+    <h3 class="text-xl font-semibold mb-2">Seiko</h3>
+    <p class="mb-2 text-gray-600 text-center">Tradición y precisión japonesa desde 1881.</p>
+    <span class="text-lg font-bold text-blue-700">Ver más</span>
+  </article>
+
+  <!-- Card Lotus -->
+  <article class="card animate__animated animate__fadeIn bg-gray-100 rounded-lg shadow p-6 flex flex-col items-center hover:shadow-2xl transition cursor-pointer animate__pulse hover:animate__tada"
+           role="button" tabindex="0" aria-label="Ver relojes Lotus" onclick="window.location.href='lotus.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/f0/Lotus_Cars_logo.svg" 
+         alt="Lotus" 
+         class="h-32 w-32 object-contain rounded-lg border-2 border-yellow-400 shadow mb-4 transition-transform duration-300 hover:scale-110" 
+         loading="lazy" />
+    <h3 class="text-xl font-semibold mb-2">Lotus</h3>
+    <p class="mb-2 text-gray-600 text-center">Diseño moderno y deportivo con estilo único.</p>
+    <span class="text-lg font-bold text-blue-700">Ver más</span>
+  </article>
+
+  <!-- Card Reebok -->
+  <article class="card animate__animated animate__fadeIn bg-gray-100 rounded-lg shadow p-6 flex flex-col items-center hover:shadow-2xl transition cursor-pointer animate__pulse hover:animate__tada"
+           role="button" tabindex="0" aria-label="Ver relojes Reebok" onclick="window.location.href='reebok.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Reebok_2019_logo.svg" 
+         alt="Reebok" 
+         class="h-32 w-32 object-contain rounded-lg border-2 border-yellow-400 shadow mb-4 transition-transform duration-300 hover:scale-110" 
+         loading="lazy" />
+    <h3 class="text-xl font-semibold mb-2">Reebok</h3>
+    <p class="mb-2 text-gray-600 text-center">Estilo deportivo y funcionalidad para tu día a día.</p>
+    <span class="text-lg font-bold text-blue-700">Ver más</span>
+  </article>
+
+  <!-- Card G-Shock -->
+  <article class="card animate__animated animate__fadeIn bg-gray-100 rounded-lg shadow p-6 flex flex-col items-center hover:shadow-2xl transition cursor-pointer animate__pulse hover:animate__tada"
+           role="button" tabindex="0" aria-label="Ver relojes G-Shock" onclick="window.location.href='gshock.html'">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Casio_G-Shock_Logo.svg" 
+         alt="G-Shock" 
+         class="h-32 w-32 object-contain rounded-lg border-2 border-yellow-400 shadow mb-4 transition-transform duration-300 hover:scale-110" 
+         loading="lazy" />
+    <h3 class="text-xl font-semibold mb-2">G-Shock</h3>
+    <p class="mb-2 text-gray-600 text-center">Resistencia extrema para deportes y aventuras.</p>
+    <span class="text-lg font-bold text-blue-700">Ver más</span>
+  </article>
+
+  <!-- Card Casio -->
+  <article class="card animate__animated animate__fadeIn bg-gray-100 rounded-lg shadow p-6 flex flex-col items-center hover:shadow-2xl transition cursor-pointer animate__pulse hover:animate__tada"
+           role="button" tabindex="0" aria-label="Ver relojes Casio" onclick="window.location.href='casio.html'">
+    <img src="https://relojeando.cl/cdn/shop/files/353436883_676656754475140_9184453992239516042_n.jpg?v=1710881918"
+         alt="Casio"
+         class="h-32 w-32 object-cover rounded-lg border-2 border-yellow-400 shadow mb-4 transition-transform duration-300 hover:scale-110"
+         loading="lazy" />
+    <h3 class="text-xl font-semibold mb-2">Casio</h3>
+    <p class="mb-2 text-gray-600 text-center">Innovación y funcionalidad japonesa.</p>
+    <span class="text-lg font-bold text-blue-700">Ver más</span>
+  </article>
+</section>
+
+<!-- COLECCIONES / FILTROS (inspirado en Festina) -->
+    <section id="colecciones" class="max-w-7xl mx-auto px-4 lg:px-8 py-12">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
+        <h2 class="text-3xl font-bold">Colecciones de Joyas</h2>
+        <div class="text-sm text-gray-500">Catálogo informativo (sin compra en línea)</div>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-2">
+        <button class="filter-btn active" data-filter="all">Todos</button>
+        <button class="filter-btn" data-filter="clasico">Clásico</button>
+        <button class="filter-btn" data-filter="deportivo">Deportivo</button>
+        <button class="filter-btn" data-filter="minimalista">Minimalista</button>
+        <button class="filter-btn" data-filter="automatico">Automático</button>
+        <button class="filter-btn" data-filter="cuero">Correa de Cuero</button>
+        <button class="filter-btn" data-filter="acero">Acero</button>
+      </div>
+    </section>
+
+
+<section class="max-w-7xl mx-auto px-4 py-14 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+  <!-- Card Collar -->
+  <article class="card animate__animated animate__fadeIn bg-gray-100 rounded-lg shadow p-6 flex flex-col items-center hover:shadow-2xl transition cursor-pointer animate__pulse hover:animate__tada"
+           role="button" tabindex="0" aria-label="Ver detalles Collar de perlas" onclick="window.location.href='collares.html'">
+    <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=400&q=80" 
+         alt="Collar de perlas" 
+         class="h-32 w-32 object-cover rounded-lg border-2 border-pink-400 shadow mb-4 transition-transform duration-300 hover:scale-110" 
+         loading="lazy" />
+    <h3 class="text-xl font-semibold mb-2">Collares</h3>
+    <p class="mb-2 text-gray-600 text-center">Elegancia clásica para cualquier ocasión.</p>
+    <span class="text-lg font-bold text-pink-600">Ver más</span>
+  </article>
+
+  <!-- Card Anillo -->
+  <article class="card animate__animated animate__fadeIn bg-gray-100 rounded-lg shadow p-6 flex flex-col items-center hover:shadow-2xl transition cursor-pointer animate__pulse hover:animate__tada"
+           role="button" tabindex="0" aria-label="Ver detalles Anillo de oro" onclick="window.location.href='anillos.html'">
+    <img src="https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&w=400&q=80" 
+         alt="Anillo de oro" 
+         class="h-32 w-32 object-cover rounded-lg border-2 border-yellow-400 shadow mb-4 transition-transform duration-300 hover:scale-110" 
+         loading="lazy" />
+    <h3 class="text-xl font-semibold mb-2">Anillos</h3>
+    <p class="mb-2 text-gray-600 text-center">Diseños sofisticados en oro y plata.</p>
+    <span class="text-lg font-bold text-yellow-600">Ver más</span>
+  </article>
+
+  <!-- Card Pulsera -->
+  <article class="card animate__animated animate__fadeIn bg-gray-100 rounded-lg shadow p-6 flex flex-col items-center hover:shadow-2xl transition cursor-pointer animate__pulse hover:animate__tada"
+           role="button" tabindex="0" aria-label="Ver detalles Pulsera de plata" onclick="window.location.href='pulseras.html'">
+    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" 
+         alt="Pulsera de plata" 
+         class="h-32 w-32 object-cover rounded-lg border-2 border-gray-400 shadow mb-4 transition-transform duration-300 hover:scale-110" 
+         loading="lazy" />
+    <h3 class="text-xl font-semibold mb-2">Pulseras</h3>
+    <p class="mb-2 text-gray-600 text-center">Estilo y elegancia para tu muñeca.</p>
+    <span class="text-lg font-bold text-gray-700">Ver más</span>
+  </article>
+
+  <!-- Card Aretes -->
+  <article class="card animate__animated animate__fadeIn bg-gray-100 rounded-lg shadow p-6 flex flex-col items-center hover:shadow-2xl transition cursor-pointer animate__pulse hover:animate__tada"
+           role="button" tabindex="0" aria-label="Ver detalles Aretes de diamante" onclick="window.location.href='aretes.html'">
+    <img src="https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=400&q=80" 
+         alt="Aretes de diamante" 
+         class="h-32 w-32 object-cover rounded-lg border-2 border-indigo-400 shadow mb-4 transition-transform duration-300 hover:scale-110" 
+         loading="lazy" />
+    <h3 class="text-xl font-semibold mb-2">Aretes</h3>
+    <p class="mb-2 text-gray-600 text-center">Brillo y sofisticación para tu look.</p>
+    <span class="text-lg font-bold text-indigo-600">Ver más</span>
+  </article>
+
+  <!-- Card Broche -->
+  <article class="card animate__animated animate__fadeIn bg-gray-100 rounded-lg shadow p-6 flex flex-col items-center hover:shadow-2xl transition cursor-pointer animate__pulse hover:animate__tada"
+           role="button" tabindex="0" aria-label="Ver detalles Broche vintage" onclick="window.location.href='broches.html'">
+    <img src="https://images.unsplash.com/photo-1509475826633-fed577a2c71b?auto=format&fit=crop&w=400&q=80" 
+         alt="Broche vintage" 
+         class="h-32 w-32 object-cover rounded-lg border-2 border-red-400 shadow mb-4 transition-transform duration-300 hover:scale-110" 
+         loading="lazy" />
+    <h3 class="text-xl font-semibold mb-2">Broches</h3>
+    <p class="mb-2 text-gray-600 text-center">Estilo clásico y elegante para cualquier prenda.</p>
+    <span class="text-lg font-bold text-red-600">Ver más</span>
+  </article>
+
+  <!-- Card Reloj Pulsera -->
+  <article class="card animate__animated animate__fadeIn bg-gray-100 rounded-lg shadow p-6 flex flex-col items-center hover:shadow-2xl transition cursor-pointer animate__pulse hover:animate__tada"
+           role="button" tabindex="0" aria-label="Ver detalles Reloj pulsera joya" onclick="window.location.href='relojesjoya.html'">
+    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=400&q=80" 
+         alt="Reloj pulsera con joya" 
+         class="h-32 w-32 object-cover rounded-lg border-2 border-green-400 shadow mb-4 transition-transform duration-300 hover:scale-110" 
+         loading="lazy" />
+    <h3 class="text-xl font-semibold mb-2">Relojes Joya</h3>
+    <p class="mb-2 text-gray-600 text-center">Combinación perfecta de reloj y joya.</p>
+    <span class="text-lg font-bold text-green-600">Ver más</span>
+  </article>
+</section>
+
+
+
+    <!-- MODAL DETALLE MODELO (simple, sin Bootstrap CSS para no chocar con Tailwind) -->
+    <div id="modelModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+      <div class="absolute inset-0 bg-black/60"></div>
+      <div class="relative bg-white rounded-xl shadow-2xl max-w-2xl w-full overflow-hidden animate__animated animate__fadeInUp">
+        <button id="closeModal" class="absolute top-3 right-3 text-2xl text-gray-500 hover:text-gray-900" aria-label="Cerrar detalle">
+          <i class="bi bi-x-lg"></i>
+        </button>
+        <div class="grid md:grid-cols-2">
+          <div class="aspect-square bg-gray-50 flex items-center justify-center">
+            <img id="modalImg" src="" alt="Imagen del modelo" class="max-h-[420px] object-contain">
+          </div>
+          <div class="p-6">
+            <h3 id="modalTitle" class="text-2xl font-bold mb-2">Modelo</h3>
+            <p id="modalMeta" class="text-gray-600 mb-4">Especificaciones</p>
+            <ul class="space-y-2 text-sm">
+              <li><i class="bi bi-gear"></i> Movimiento: <span id="modalMov">Cuarzo</span></li>
+              <li><i class="bi bi-rulers"></i> Diámetro: <span id="modalDiam">40 mm</span></li>
+              <li><i class="bi bi-droplet"></i> Resistencia al agua: <span id="modalWR">50 m</span></li>
+              <li><i class="bi bi-box"></i> Material: <span id="modalMat">Acero</span></li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- SOBRE NOSOTROS -->
-  <section id="sobre-nosotros" class="bg-gray-100 py-12 px-4">
-    <div class="max-w-6xl mx-auto text-center">
-      <h2 class="text-3xl font-bold text-gray-800 mb-6">Sobre Nosotros</h2>
-      <p class="text-lg text-gray-600 leading-relaxed max-w-3xl mx-auto">
-        En <span class="font-semibold text-yellow-600">Relojería y Joyería ZH</span> nos apasiona el arte de medir el tiempo y el brillo de las joyas.  
-        Somos un negocio joven con tradición familiar, ubicado en el corazón de San Felipe, que combina experiencia y modernidad para ofrecer piezas únicas y un servicio de confianza.
-      </p>
-    </div>
-  </section>
-
-  <!-- SERVICIOS -->
-  <section id="servicios" class="bg-white py-12 px-4">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold text-gray-800 text-center mb-8">Nuestros Servicios</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition duration-300">
-          <h3 class="text-xl font-semibold text-yellow-600 mb-3">Venta de Relojes y Joyas</h3>
-          <p class="text-gray-600">Amplia selección de relojes de marcas reconocidas y joyas modernas para todas las edades y estilos.</p>
-        </div>
-        <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition duration-300">
-          <h3 class="text-xl font-semibold text-yellow-600 mb-3">Reparación de Relojes</h3>
-          <p class="text-gray-600">Servicio técnico especializado en reparación, ajuste y mantenimiento de relojes análogos y digitales.</p>
-        </div>
-        <div class="bg-gray-50 p-6 rounded-xl shadow hover:shadow-lg transition duration-300">
-          <h3 class="text-xl font-semibold text-yellow-600 mb-3">Cambio de Pila y Correas</h3>
-          <p class="text-gray-600">Cambio rápido y seguro de baterías y correas para mantener tu reloj siempre funcionando y con estilo.</p>
+    <!-- UBICACIÓN / MAPA -->
+    <section id="ubicacion" class="bg-gray-50 py-14">
+      <div class="max-w-7xl mx-auto px-4 lg:px-8">
+        <h2 class="text-3xl font-bold mb-6">Ubicación</h2>
+        <p class="text-gray-600 mb-4">Encuéntranos en San Felipe. Te esperamos para asesorarte.</p>
+        <div class="rounded-2xl overflow-hidden shadow-lg">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3342.0788085154244!2d-70.727704!3d-32.7495647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9688178de00a8e75%3A0x28cd6b551bca2eee!2sRELOJERIA%20Y%20JOYERIA%20ZH!5e0!3m2!1ses-419!2scl!4v1690000000000!5m2!1ses-419!2scl" 
+            width="100%" height="430" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa Relojería ZH"></iframe>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- CONTACTO -->
-  <section id="contacto" class="py-16 bg-white">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-6">Contáctanos</h2>
-      <div class="max-w-xl mx-auto bg-gray-50 rounded-lg shadow p-6 flex flex-col gap-4 text-center">
-        <div class="flex items-center justify-center gap-3">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="h-7 w-7" loading="lazy">
-          <a href="https://wa.me/56912345678" target="_blank" class="text-lg text-green-600 hover:underline font-semibold" aria-label="Contactar por WhatsApp">+56 9 1234 5678</a>
+    <!-- CONTACTO -->
+    <section id="contacto" class="max-w-7xl mx-auto px-4 lg:px-8 py-14">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <h2 class="text-3xl font-bold mb-4">Contacto</h2>
+          <p class="text-gray-600 mb-6">¿Buscas un modelo en particular? Escríbenos y te ayudamos.</p>
+          <ul class="space-y-2 text-gray-700">
+            <li><i class="bi bi-geo-alt"></i> San Felipe, Valparaíso, Chile</li>
+            <li><i class="bi bi-envelope"></i> contacto@relojeria-zh.cl</li>
+            <li><i class="bi bi-telephone"></i> +56 9 1234 5678</li>
+          </ul>
         </div>
-        <div class="flex items-center justify-center gap-3">
-          <svg class="h-6 w-6 text-blue-500" fill="currentColor" viewBox="0 0 24 24"><path d="M2.01 6.51L12 13.01l9.99-6.5A2 2 0 0 0 20 4H4a2 2 0 0 0-1.99 2.51z"/><path d="M22 8.98l-10 6.51-10-6.51V18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8.98z"/></svg>
-          <a href="mailto:contacto@relojeriazh.cl" class="text-lg text-blue-600 hover:underline font-semibold" aria-label="Enviar correo a contacto@relojeriazh.cl">contacto@relojeriazh.cl</a>
-        </div>
-        <div class="flex items-center justify-center gap-3">
-          <svg class="h-6 w-6 text-yellow-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10m-12 8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12z"/></svg>
-          <span class="text-lg text-gray-700 font-semibold">Lunes a Viernes: 10:00 - 19:00 | Sábado: 10:00 - 14:00</span>
-        </div>
+        <form class="bg-white rounded-2xl shadow-lg p-6 grid gap-4" action="#" aria-label="Formulario de contacto">
+          <label class="grid gap-1">
+            <span class="text-sm font-medium">Nombre</span>
+            <input type="text" required class="input" placeholder="Tu nombre">
+          </label>
+          <label class="grid gap-1">
+            <span class="text-sm font-medium">Correo</span>
+            <input type="email" required class="input" placeholder="tucorreo@dominio.com">
+          </label>
+          <label class="grid gap-1">
+            <span class="text-sm font-medium">Mensaje</span>
+            <textarea rows="4" required class="input resize-none" placeholder="Cuéntanos qué buscas"></textarea>
+          </label>
+          <button class="btn-primary w-full" type="submit">Enviar</button>
+        </form>
       </div>
-    </div>
-  </section>
-
-  <!-- UBICACIÓN MAPA -->
-  <section class="py-16 bg-gray-50">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-6">Ubicación</h2>
-      <div class="rounded-lg overflow-hidden shadow-lg">
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3342.0788085154244!2d-70.727704!3d-32.7495647!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9688178de00a8e75%3A0x28cd6b551bca2eee!2sRELOJERIA%20Y%20JOYERIA%20ZH!5e0!3m2!1ses-419!2scl!4v1690000000000!5m2!1ses-419!2scl" 
-          width="100%" 
-          height="400" 
-          style="border:0;" 
-          allowfullscreen="" 
-          loading="lazy" 
-          referrerpolicy="no-referrer-when-downgrade"
-          title="Ubicación Relojería ZH">
-        </iframe>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- FOOTER -->
-  <footer class="bg-gray-900 text-white text-center py-6">
-    <p>&copy; 2025 SseketuDeV y Hasse. Todos los derechos reservados.</p>
+  <footer class="border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 py-8 text-center text-sm text-gray-500">
+      © 2025 Relojería ZH — Catálogo informativo. Todos los derechos reservados SseketuDev & Hasse.
+    </div>
   </footer>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+  <!-- JS: menú, carrusel, filtros y modal -->
+  <script>
+    // Hamburguesa
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Swiper Hero
+    const heroSwiper = new Swiper('.heroSwiper', {
+      loop: true,
+      speed: 900,
+      effect: 'fade',
+      fadeEffect: { crossFade: true },
+      autoplay: { delay: 1000, disableOnInteraction: false },
+      pagination: { el: '.swiper-pagination', clickable: true },
+      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }
+    });
+
+    // Filtros catálogo
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+
+        cards.forEach(card => {
+          const tags = card.getAttribute('data-tags');
+          const show = filter === 'all' || tags.includes(filter);
+          card.style.display = show ? '' : 'none';
+        });
+      });
+    });
+
+    // Modal de detalle (simple: usa datos de la card)
+    const modal = document.getElementById('modelModal');
+    const closeModal = document.getElementById('closeModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalMeta = document.getElementById('modalMeta');
+    const modalMov = document.getElementById('modalMov');
+    const modalDiam = document.getElementById('modalDiam');
+    const modalWR = document.getElementById('modalWR');
+    const modalMat = document.getElementById('modalMat');
+
+    document.querySelectorAll('#catalogo .card a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const card = link.closest('.card');
+        const img = card.querySelector('img').getAttribute('src');
+        const title = card.querySelector('.card-title').textContent.trim();
+        const meta = card.querySelector('.card-meta').textContent.trim();
+
+        modalImg.src = img;
+        modalTitle.textContent = title;
+        modalMeta.textContent = meta;
+
+        // Datos demo (puedes mapear por título si quieres mayor precisión)
+        modalMov.textContent = /Automático/i.test(meta) ? 'Automático' : 'Cuarzo';
+        modalDiam.textContent = /40|42/i.test(meta) ? (meta.match(/(40|42)\s*mm/i)?.[0] || '40 mm') : '40 mm';
+        modalWR.textContent = /200|100|50/i.test(meta) ? (meta.match(/(200|100|50)\s*m/i)?.[0] || '50 m') : '50 m';
+        modalMat.textContent = /cuero/i.test(meta) ? 'Cuero' : 'Acero';
+
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      });
+    });
+
+    closeModal.addEventListener('click', () => {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    });
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+    });
+  </script>
 </body>
 </html>
