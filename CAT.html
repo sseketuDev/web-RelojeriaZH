@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- META BÁSICO -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Relojería ZH | Catálogo Completo de Relojes en San Felipe</title>
+  <meta name="description" content="Catálogo completo de relojes Relojería ZH en San Felipe. Amplia variedad de modelos para hombre y niños.">
+  <link rel="canonical" href="https://tusitio.cl/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Relojería ZH | Catálogo Completo de Relojes" />
+  <meta property="og:description" content="Catálogo completo de relojes. Encuentra tu modelo ideal en Relojería ZH." />
+  <meta property="og:image" content="https://tusitio.cl/img/logo-pro.png" />
+  <meta property="og:url" content="https://tusitio.cl/" />
+
+  <!-- JSON-LD: Negocio local + algunos modelos (catálogo) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"JewelryStore",
+    "name":"Relojería ZH",
+    "image":"https://tusitio.cl/img/logo-pro.png",
+    "url":"https://tusitio.cl/",
+    "address":{"@type":"PostalAddress","addressLocality":"San Felipe","addressRegion":"Valparaíso","addressCountry":"CL"},
+    "geo":{"@type":"GeoCoordinates","latitude":-32.7495647,"longitude":-70.727704},
+    "sameAs":[]
+  }
+  </script>
+
+  <!-- FUENTES -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Animate.css (animaciones tipo "bootstrap vibes") -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <!-- Swiper (Carrusel) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"/>
+
+<!-- CSS propio -->
+  <link rel="stylesheet" href="estilo_CAT.css"/>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/logo pro.png" />
+</head>
+<body class="text-gray-900 bg-white selection:bg-yellow-300 selection:text-black">
+
+  <!-- HEADER -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 py-3 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group" aria-label="Inicio Relojería ZH">
+        <img src="img/logo pro.png" alt="Logo Relojería ZH" class="h-12 w-12 rounded-full border border-yellow-400 shadow object-cover"/>
+        <span class="text-2xl sm:text-3xl font-bold tracking-wide text-yellow-500 group-hover:text-yellow-400 transition">
+          Relojería ZH
+        </span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 font-medium">
+        <a href="index.html#inicio" class="hover:text-yellow-500">Inicio</a>
+        <a href="index.html#catalogo" class="hover:text-yellow-500">Catálogo</a>
+        <a href="index.html#colecciones" class="hover:text-yellow-500">Colecciones</a>
+        <a href="index.html#ubicacion" class="hover:text-yellow-500">Ubicación</a>
+        <a href="index.html#contacto" class="hover:text-yellow-500">Contacto</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden text-3xl" aria-label="Abrir menú"><i class="bi bi-list"></i></button>
+    </div>
+    <!-- Menú móvil -->
+    <div id="mobileMenu" class="hidden md:hidden border-t border-gray-100">
+      <nav class="max-w-7xl mx-auto px-4 lg:px-8 py-3 flex flex-col gap-3">
+        <a href="index.html#inicio" class="py-2 hover:text-yellow-500">Inicio</a>
+        <a href="index.html#catalogo" class="py-2 hover:text-yellow-500">Catálogo</a>
+        <a href="index.html#colecciones" class="py-2 hover:text-yellow-500">Colecciones</a>
+        <a href="index.html#ubicacion" class="py-2 hover:text-yellow-500">Ubicación</a>
+        <a href="index.html#contacto" class="py-2 hover:text-yellow-500">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="bg-gradient-to-r from-amber-50 to-yellow-100 py-16">
+      <div class="max-w-7xl mx-auto px-4 lg:px-8 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 text-amber-800">Catálogo Completo</h1>
+        <p class="text-lg text-amber-600 max-w-3xl mx-auto mb-8">Descubre nuestra amplia selección de relojes para hombre y niños. Encuentra el modelo perfecto para cada ocasión.</p>
+      </div>
+    </section>
+
+    <!-- COLECCIONES / FILTROS -->
+    <section id="colecciones" class="max-w-7xl mx-auto px-4 lg:px-8 py-12">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
+        <h2 class="text-3xl font-bold">Filtrar por Categoría</h2>
+        <div class="text-sm text-gray-500" id="totalItems">Mostrando todos los modelos</div>
+      </div>
+      <!-- Filtros -->
+      <div class="flex flex-wrap gap-2 mb-8">
+        <button class="filter-btn px-4 py-2 rounded-full bg-yellow-100 text-yellow-700 font-semibold active" data-filter="all">Todos</button>
+        <button class="filter-btn px-4 py-2 rounded-full bg-gray-100 text-gray-700 font-semibold" data-filter="varon">Hombre</button>
+        <button class="filter-btn px-4 py-2 rounded-full bg-gray-100 text-gray-700 font-semibold" data-filter="ninos">Niños</button>
+        <button class="filter-btn px-4 py-2 rounded-full bg-gray-100 text-gray-700 font-semibold" data-filter="set">Set Reloj + Joya</button>
+        <button class="filter-btn px-4 py-2 rounded-full bg-gray-100 text-gray-700 font-semibold" data-filter="correa">Correas</button>
+      </div>
+    </section>
+
+    <!-- CATÁLOGO DE MODELOS (GRID) -->
+    <section id="catalogo" class="max-w-7xl mx-auto px-4 lg:px-8 pb-16">
+      <div id="catalogoGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        
+        <!-- Los relojes se insertarán aquí mediante JavaScript -->
+        
+      </div>
+    </section>
+
+    <!-- MODAL DETALLE MODELO -->
+    <div id="modelModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+      <div class="absolute inset-0 bg-black/60"></div>
+      <div class="relative bg-white rounded-xl shadow-2xl max-w-2xl w-full overflow-hidden animate__animated animate__fadeInUp">
+        <button id="closeModal" class="absolute top-3 right-3 text-2xl text-gray-500 hover:text-gray-900 z-10" aria-label="Cerrar detalle">
+          <i class="bi bi-x-lg"></i>
+        </button>
+        <div class="grid md:grid-cols-2">
+          <div class="aspect-square bg-gray-50 flex items-center justify-center p-4">
+            <img id="modalImg" src="" alt="Imagen del modelo" class="max-h-[420px] object-contain">
+          </div>
+          <div class="p-6">
+            <h3 id="modalTitle" class="text-2xl font-bold mb-2">Modelo</h3>
+            <p id="modalCode" class="watch-code mb-2">Código: </p>
+            <p id="modalPrice" class="text-xl font-bold text-amber-700 mb-2">$0</p>
+            <p id="modalMeta" class="text-gray-600 mb-4">Especificaciones</p>
+            <ul class="space-y-2 text-sm">
+              <li class="flex items-center"><i class="bi bi-watch mr-2 text-yellow-500"></i> Tamaño: <span id="modalSize" class="ml-1 font-medium"></span></li>
+              <li class="flex items-center"><i class="bi bi-person mr-2 text-yellow-500"></i> Género: <span id="modalGender" class="ml-1 font-medium"></span></li>
+              <li class="flex items-center"><i class="bi bi-box mr-2 text-yellow-500"></i> Unidades: <span id="modalStock" class="ml-1 font-medium"></span></li>
+            </ul>
+            <div class="mt-6 pt-4 border-t border-gray-100">
+              <p class="text-sm text-gray-500 mb-2">¿Te interesa este modelo?</p>
+              <a href="https://wa.me/56977490064?text=Hola,%20estoy%20interesado%20en%20el%20modelo%20" 
+   id="whatsappLink" 
+   target="_blank" 
+   class="inline-flex items-center px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg transition">
+  <i class="bi bi-whatsapp mr-2"></i> Consultar por WhatsApp
+</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 py-8 text-center text-sm text-gray-500">
+      © 2025 Relojería ZH — Catálogo informativo. Todos los derechos reservados SseketuDev & Hasse.
+    </div>
+  </footer>
+
+  <!-- Botón flotante WhatsApp -->
+  <a href="https://wa.me/+56 9 7749 0064" target="_blank" rel="noopener"
+    class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg p-4 flex items-center justify-center animate__animated animate__bounceIn"
+    aria-label="Contáctanos por WhatsApp">
+    <i class="bi bi-whatsapp text-2xl"></i>
+  </a>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+  <!-- JS: menú, carrusel, filtros y modal -->
+  <script>
+    // Datos de los relojes extraídos del PDF
+    const watchData = [
+      // Página 1
+      {code: "QC.141.11.626", price: "$134.990", stock: 1, size: "44MM", gender: "Varon Set reloj + joya", tags: "varon,set"},
+      {code: "QC.141.21.121", price: "$134.990", stock: 3, size: "44MM", gender: "Varon Set reloj + joya", tags: "varon,set"},
+      {code: "QC.161.21.121", price: "$134.990", stock: 2, size: "44MM", gender: "Varon Set reloj + joya", tags: "varon,set"},
+      {code: "13.169.23.123", price: "$269.990", stock: 4, size: "45,5MM", gender: "Varon", tags: "varon"},
+      {code: "13.169.27.721", price: "$269.990", stock: 2, size: "45,5MM", gender: "Varon", tags: "varon"},
+      {code: "AH.141.21.127", price: "$159.990", stock: 4, size: "46MM", gender: "Varon", tags: "varon"},
+      {code: "AH.161.27.127", price: "$169.990", stock: 4, size: "46MM", gender: "Varon", tags: "varon"},
+      {code: "AJ.141.11.121", price: "$189.990", stock: 10, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "AJ.141.11.627", price: "$189.990", stock: 10, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "AJ.151.25.525", price: "$169.990", stock: 13, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "AJ.161.34.127", price: "$184.990", stock: 2, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "AJ.161.38.126", price: "$184.990", stock: 3, size: "44MM", gender: "Varon", tags: "varon"},
+
+      // Página 2
+      {code: "AL.191.35.129", price: "$184.990", stock: 13, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "AL.141.11.621", price: "$209.990", stock: 8, size: "43MM", gender: "Varon", tags: "varon"},
+      {code: "AL.191.11.129", price: "$214.990", stock: 12, size: "43MM", gender: "Varon", tags: "varon"},
+      {code: "AL.191.11.229", price: "$214.990", stock: 7, size: "43MM", gender: "Varon", tags: "varon"},
+      {code: "AO.141.11.126", price: "$189.990", stock: 1, size: "43MM", gender: "Varon", tags: "varon"},
+      {code: "AO.141.11.127", price: "$189.990", stock: 7, size: "43MM", gender: "Varon", tags: "varon"},
+      {code: "AO.141.11.626", price: "$189.990", stock: 1, size: "43MM", gender: "Varon", tags: "varon"},
+      {code: "AP.141.11.111", price: "$189.990", stock: 5, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "AP.141.11.717", price: "$189.990", stock: 4, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "AP.141.27.111", price: "$174.990", stock: 1, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "AP.149.11.117", price: "$224.990", stock: 3, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "AP.149.21.117", price: "$209.990", stock: 2, size: "44MM", gender: "Varon", tags: "varon"},
+
+      // Página 3
+      {code: "AP.149.21.711", price: "$209.990", stock: 1, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "AP.169.21.111", price: "$224.990", stock: 6, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "AR.141.23.133", price: "$169.990", stock: 2, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "AR.161.21.131", price: "$189.990", stock: 7, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "AR.191.21.139", price: "$189.990", stock: 3, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "AR.191.26.639", price: "$189.990", stock: 5, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "AS.149.21.137", price: "$199.990", stock: 5, size: "43MM", gender: "Varon", tags: "varon"},
+      {code: "AS.149.23.337", price: "$199.990", stock: 6, size: "43MM", gender: "Varon", tags: "varon"},
+      {code: "AS.149.27.137", price: "$199.990", stock: 9, size: "43MM", gender: "Varon", tags: "varon"},
+      {code: "AS.149.28.137", price: "$199.990", stock: 12, size: "43MM", gender: "Varon", tags: "varon"},
+      {code: "DR.161.23.311", price: "$199.990", stock: 3, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "KD.410.08.217", price: "$49.990", stock: 9, size: "32MM", gender: "Niños", tags: "ninos"},
+
+      // Página 4
+      {code: "KD.410.26.617", price: "$49.990", stock: 4, size: "32MM", gender: "Niños", tags: "ninos"},
+      {code: "KE.140.21.111", price: "$59.990", stock: 1, size: "30MM", gender: "Niños", tags: "ninos"},
+      {code: "KE.140.26.212", price: "$59.990", stock: 2, size: "30MM", gender: "Niños", tags: "ninos"},
+      {code: "KE.140.27.212", price: "$59.990", stock: 3, size: "30MM", gender: "Niños", tags: "ninos"},
+      {code: "KE.140.28.212", price: "$59.990", stock: 3, size: "30MM", gender: "Niños", tags: "ninos"},
+      {code: "LB.111.21.131", price: "$109.990", stock: 24, size: "45,5MM", gender: "Varon", tags: "varon"},
+      {code: "LB.111.21.137", price: "$109.990", stock: 30, size: "45,5MM", gender: "Varon", tags: "varon"},
+      {code: "LB.111.21.231", price: "$109.990", stock: 13, size: "45,5MM", gender: "Varon", tags: "varon"},
+      {code: "LB.111.27.137", price: "$109.990", stock: 1, size: "45,5MM", gender: "Varon", tags: "varon"},
+      {code: "LF.111.21.131", price: "$89.990", stock: 11, size: "44,5MM", gender: "Varon", tags: "varon"},
+      {code: "LF.111.21.731", price: "$89.990", stock: 25, size: "44,5MM", gender: "Varon", tags: "varon"},
+      {code: "LF.111.25.537", price: "$89.990", stock: 16, size: "44,5MM", gender: "Varon", tags: "varon"},
+
+      // Página 5
+      {code: "LH.110.21.126", price: "$89.990", stock: 16, size: "45,5MM", gender: "Varon", tags: "varon"},
+      {code: "LJ.110.26.622", price: "$89.990", stock: 9, size: "43MM", gender: "Varon", tags: "varon"},
+      {code: "LJ.131.23.323", price: "$89.990", stock: 19, size: "43MM", gender: "Varon", tags: "varon"},
+      {code: "LJ.140.24.427", price: "$89.990", stock: 17, size: "43MM", gender: "Varon", tags: "varon"},
+      {code: "LJ.160.21.120", price: "$89.990", stock: 39, size: "43MM", gender: "Varon", tags: "varon"},
+      {code: "LJ.160.21.121", price: "$89.990", stock: 25, size: "43MM", gender: "Varon", tags: "varon"},
+      {code: "LJ.160.21.221", price: "$89.990", stock: 24, size: "43MM", gender: "Varon", tags: "varon"},
+      {code: "LJ.160.21.721", price: "$89.990", stock: 109, size: "43MM", gender: "Varon", tags: "varon"},
+      {code: "LJ.160.21.821", price: "$89.990", stock: 1, size: "43MM", gender: "Varon", tags: "varon"},
+      {code: "LJ.160.27.127", price: "$89.990", stock: 30, size: "43MM", gender: "Varon", tags: "varon"},
+      {code: "LJ.180.28.828", price: "$89.990", stock: 14, size: "43MM", gender: "Varon", tags: "varon"},
+      {code: "LQ.161.21.132", price: "$114.990", stock: 2, size: "45MM", gender: "Varon", tags: "varon"},
+
+      // Página 6
+      {code: "LQ.161.23.332", price: "$114.990", stock: 6, size: "45MM", gender: "Varon", tags: "varon"},
+      {code: "LQ.161.26.632", price: "$114.990", stock: 3, size: "45MM", gender: "Varon", tags: "varon"},
+      {code: "LQ.169.21.122", price: "$169.990", stock: 7, size: "45MM", gender: "Varon", tags: "varon"},
+      {code: "LQ.169.21.821", price: "$169.990", stock: 3, size: "45MM", gender: "Varon", tags: "varon"},
+      {code: "LQ.169.23.321", price: "$169.990", stock: 3, size: "45MM", gender: "Varon", tags: "varon"},
+      {code: "LR.161.23.138", price: "$114.990", stock: 27, size: "45MM", gender: "Varon", tags: "varon"},
+      {code: "LR.161.28.138", price: "$114.990", stock: 36, size: "45MM", gender: "Varon", tags: "varon"},
+      {code: "LT.161.21.532", price: "$124.990", stock: 1, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "LT.161.26.632", price: "$124.990", stock: 2, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "LU.130.23.123", price: "$114.990", stock: 14, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "LU.160.21.127", price: "$114.990", stock: 14, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "LU.160.21.721", price: "$114.990", stock: 7, size: "44MM", gender: "Varon", tags: "varon"},
+
+      // Página 7
+      {code: "LU.160.23.128", price: "$114.990", stock: 9, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "LU.160.25.125", price: "$114.990", stock: 15, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "LU.160.25.127", price: "$114.990", stock: 14, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "LU.160.27.126", price: "$114.990", stock: 4, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "MA.145.21.131", price: "$124.990", stock: 10, size: "47MM", gender: "Varon", tags: "varon"},
+      {code: "MA.145.26.136", price: "$124.990", stock: 18, size: "47MM", gender: "Varon", tags: "varon"},
+      {code: "MA.155.27.137", price: "$124.990", stock: 36, size: "47MM", gender: "Varon", tags: "varon"},
+      {code: "MA.165.21.731", price: "$124.990", stock: 84, size: "47MM", gender: "Varon", tags: "varon"},
+      {code: "ME.195.21.139", price: "$104.990", stock: 3, size: "47MM", gender: "Varon", tags: "varon"},
+      {code: "ME.145.23.133", price: "$104.990", stock: 6, size: "49MM", gender: "Varon", tags: "varon"},
+      {code: "ME.145.25.135", price: "$104.990", stock: 2, size: "49MM", gender: "Varon", tags: "varon"},
+      {code: "MH.135.23.131", price: "$104.990", stock: 20, size: "45MM", gender: "Varon", tags: "varon"},
+
+      // Página 8
+      {code: "MX.115.26.236", price: "$104.990", stock: 7, size: "48MM", gender: "Varon", tags: "varon"},
+      {code: "NR.131.11.223", price: "$156.990", stock: 2, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "NR.161.34.123", price: "$142.990", stock: 2, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "NR.163.34.129", price: "$188.990", stock: 3, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "NR.183.34.123", price: "$188.990", stock: 6, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "OC.167.21.142", price: "$89.990", stock: 22, size: "47MM", gender: "Varon", tags: "varon"},
+      {code: "OC.167.23.143", price: "$89.990", stock: 29, size: "47MM", gender: "Varon", tags: "varon"},
+      {code: "P3.110.26.136", price: "$89.990", stock: 2, size: "48MM", gender: "0", tags: "varon"},
+      {code: "PU.243.11.211", price: "$209.990", stock: 1, size: "45MM", gender: "Universal/Recta", tags: "varon"},
+      {code: "PU.251.35.515", price: "$169.990", stock: 24, size: "45MM", gender: "Universal/Recta", tags: "varon"},
+      {code: "PU.261.35.114", price: "$169.990", stock: 1, size: "45MM", gender: "Varon", tags: "varon"},
+      {code: "PU.263.35.114", price: "$219.990", stock: 4, size: "45MM", gender: "Varon", tags: "varon"},
+
+      // Página 9
+      {code: "PU.293.35.119", price: "$219.990", stock: 7, size: "45MM", gender: "Varon", tags: "varon"},
+      {code: "PZ.141.23.323", price: "$169.990", stock: 30, size: "44,5MM", gender: "Varon", tags: "varon"},
+      {code: "PZ.149.21.128", price: "$209.990", stock: 29, size: "44,5MM", gender: "Varon", tags: "varon"},
+      {code: "PZ.159.28.929", price: "$224.990", stock: 34, size: "44,5MM", gender: "Varon", tags: "varon"},
+      {code: "PZ.169.12.121", price: "$274.990", stock: 5, size: "44,5MM", gender: "Varon", tags: "varon"},
+      {code: "QA.141.11.132", price: "$134.990", stock: 3, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "QA.141.11.237", price: "$134.990", stock: 8, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "QA.161.16.137", price: "$159.990", stock: 5, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "QA.161.16.138", price: "$159.990", stock: 9, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "QB.141.27.137", price: "$124.990", stock: 4, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "QB.143.11.137", price: "$189.990", stock: 1, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "QB.143.11.637", price: "$189.990", stock: 1, size: "44MM", gender: "Varon", tags: "varon"},      // Página 10 (continuación)
+      {code: "QB.161.16.137", price: "$149.990", stock: 7, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "QB.161.21.131", price: "$124.990", stock: 10, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "QB.161.27.137", price: "$124.990", stock: 10, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "QB.163.27.731", price: "$169.990", stock: 18, size: "44MM", gender: "Varon", tags: "varon"},
+      {code: "SJ.141.21.137", price: "$244.990", stock: 2, size: "46,5MM", gender: "Varon", tags: "varon"},
+      {code: "SJ.161.21.137", price: "$244.990", stock: 1, size: "46,5MM", gender: "Varon", tags: "varon"},
+      {code: "SJ.161.23.133", price: "$244.990", stock: 2, size: "46,5MM", gender: "Varon", tags: "varon"},
+      {code: "SJ.161.23.331", price: "$244.990", stock: 6, size: "46,5MM", gender: "Varon", tags: "varon"},
+      {code: "YV.140.11.121", price: "$164.990", stock: 11, size: "42MM", gender: "Varon", tags: "varon"},
+      {code: "YV.140.11.122", price: "$164.990", stock: 11, size: "42MM", gender: "Varon", tags: "varon"},
+      {code: "YV.140.21.122", price: "$144.990", stock: 24, size: "42MM", gender: "Varon", tags: "varon"},
+
+      // Página 11
+      {code: "YW.143.11.137", price: "$199.990", stock: 3, size: "42,5MM", gender: "Varon", tags: "varon"},
+      {code: "YW.143.11.731", price: "$199.990", stock: 1, size: "#N/D", gender: "#N/D", tags: "varon"},
+      {code: "YW.161.34.137", price: "$169.990", stock: 1, size: "#N/D", gender: "#N/D", tags: "varon"},
+      {code: "1D-21", price: "$29.990", stock: 20, size: "30mm", gender: "Compatible Mod: 1D", tags: "correa"},
+      {code: "A1-21", price: "$29.990", stock: 46, size: "16mm", gender: "Compatible Mod: A1/A8/A5", tags: "correa"},
+      {code: "AH-21", price: "$29.990", stock: 24, size: "22mm", gender: "Compatible Mod: AH", tags: "correa"},
+      {code: "Universal/Recta-21", price: "$29.990", stock: 13, size: "22mm", gender: "Compatible Mod: Universal/Recta", tags: "correa"},
+      {code: "Universal/Recta-22", price: "$29.990", stock: 6, size: "22mm", gender: "Compatible Mod: Universal/Recta", tags: "correa"},
+      {code: "CB-21", price: "$29.990", stock: 8, size: "20mm", gender: "Compatible Mod: CB", tags: "correa"},
+      {code: "CC-21", price: "$29.990", stock: 5, size: "14mm", gender: "Compatible Mod: CC", tags: "correa"},
+      {code: "K1/K2/K3-21", price: "$29.990", stock: 40, size: "21mm", gender: "Compatible Mod: K1/K2/K3", tags: "correa"},
+      {code: "K1/K2/K3-22", price: "$29.990", stock: 6, size: "21mm", gender: "Compatible Mod: K1/K2/K3", tags: "correa"},
+
+      // Página 12
+      {code: "LB-21", price: "$29.990", stock: 166, size: "20mm", gender: "Compatible Mod: LB/LH", tags: "correa"},
+      {code: "LB-27", price: "$29.990", stock: 19, size: "20mm", gender: "Compatible Mod: LB/LH", tags: "correa"},
+      {code: "LE-21", price: "$29.990", stock: 71, size: "21mm", gender: "Compatible Mod: LE/LO", tags: "correa"},
+      {code: "LE-27", price: "$29.990", stock: 20, size: "21mm", gender: "Compatible Mod: LE/LO", tags: "correa"},
+      {code: "LF-21", price: "$29.990", stock: 94, size: "22mm", gender: "Compatible Mod: Universal/Recta", tags: "correa"},
+      {code: "LF-23", price: "$29.990", stock: 9, size: "22mm", gender: "Compatible Mod: Universal/Recta", tags: "correa"},
+      {code: "LF-25", price: "$29.990", stock: 15, size: "22mm", gender: "Compatible Mod: Universal/Recta", tags: "correa"},
+      {code: "LJ-21", price: "$29.990", stock: 21, size: "20mm", gender: "Compatible Mod: Universal/Recta", tags: "correa"},
+      {code: "LJ-23", price: "$29.990", stock: 15, size: "20mm", gender: "Compatible Mod: Universal/Recta", tags: "correa"},
+      {code: "LJ-26", price: "$29.990", stock: 2, size: "20mm", gender: "Compatible Mod: Universal/Recta", tags: "correa"},
+      {code: "LK-21", price: "$29.990", stock: 9, size: "22mm", gender: "Compatible Mod: LK", tags: "correa"},
+      {code: "LK-25", price: "$29.990", stock: 19, size: "22mm", gender: "Compatible Mod: LK", tags: "correa"},
+
+      // Página 13
+      {code: "LK-27", price: "$29.990", stock: 7, size: "22mm", gender: "Compatible Mod: LK", tags: "correa"},
+      {code: "LK-28", price: "$29.990", stock: 9, size: "22mm", gender: "Compatible Mod: LK", tags: "correa"},
+      {code: "LO-21", price: "$29.990", stock: 20, size: "21mm", gender: "Compatible Mod: LE/LO", tags: "correa"},
+      {code: "MA-21", price: "$29.990", stock: 46, size: "22mm", gender: "Compatible Mod: MA", tags: "correa"},
+      {code: "MC-21", price: "$29.990", stock: 3, size: "24mm", gender: "Compatible Mod: MC", tags: "correa"},
+      {code: "ME-21", price: "$29.990", stock: 3, size: "18mm", gender: "Compatible Mod: ME", tags: "correa"},
+      {code: "ME-23", price: "$29.990", stock: 3, size: "18mm", gender: "Compatible Mod: ME", tags: "correa"},
+      {code: "ME-26", price: "$29.990", stock: 3, size: "18mm", gender: "Compatible Mod: ME", tags: "correa"},
+      {code: "ME-27", price: "$29.990", stock: 5, size: "18mm", gender: "Compatible Mod: ME", tags: "correa"},
+      {code: "ME-29", price: "$29.990", stock: 5, size: "18mm", gender: "Compatible Mod: ME", tags: "correa"},
+      {code: "MF-21", price: "$29.990", stock: 3, size: "24mm", gender: "Compatible Mod: Universal/Recta", tags: "correa"},
+      {code: "MF-23", price: "$29.990", stock: 7, size: "24mm", gender: "Compatible Mod: Universal/Recta", tags: "correa"},
+
+      // Página 14
+      {code: "MF-26", price: "$29.990", stock: 8, size: "24mm", gender: "Compatible Mod: Universal/Recta", tags: "correa"},
+      {code: "MF-27", price: "$29.990", stock: 10, size: "24mm", gender: "Compatible Mod: Universal/Recta", tags: "correa"},
+      {code: "NP-34", price: "$29.990", stock: 24, size: "22mm", gender: "Compatible Mod: Universal/Recta", tags: "correa"},
+      {code: "NQ-21", price: "$29.990", stock: 13, size: "20mm", gender: "Compatible Mod: Universal/Recta", tags: "correa"},
+      {code: "OA-21", price: "$29.990", stock: 9, size: "28mm", gender: "Compatible Mod: OA", tags: "correa"},
+      {code: "OA-27", price: "$29.990", stock: 6, size: "28mm", gender: "Compatible Mod: OA", tags: "correa"},
+      {code: "OB-21", price: "$29.990", stock: 5, size: "22mm", gender: "Compatible Mod: Universal/Recta", tags: "correa"},
+      {code: "OC-21", price: "$29.990", stock: 17, size: "20mm", gender: "Compatible Mod: OC", tags: "correa"},
+      {code: "OC-27", price: "$29.990", stock: 2, size: "20mm", gender: "Compatible Mod: OC", tags: "correa"},
+      {code: "P.K112121B", price: "$29.990", stock: 1, size: "21mm", gender: "Compatible Mod: K1/K2/K3", tags: "correa"},
+      {code: "P.K112127Y", price: "$29.990", stock: 1, size: "21mm", gender: "Compatible Mod: K1/K2/K3", tags: "correa"},
+      {code: "P.PU14160", price: "$29.990", stock: 1, size: "24mm", gender: "Compatible Mod: Universal/Recta", tags: "correa"},
+
+      // Página 15
+      {code: "P.PU14920", price: "$29.990", stock: 1, size: "24mm", gender: "0", tags: "correa"},
+      {code: "P3-21", price: "$29.990", stock: 3, size: "27mm", gender: "ME", tags: "correa"},
+      {code: "P3-26", price: "$29.990", stock: 3, size: "27mm", gender: "Universal/Recta", tags: "correa"},
+      {code: "P9-21", price: "$29.990", stock: 14, size: "22mm", gender: "Universal/Recta", tags: "correa"},
+      {code: "P9-26", price: "$29.990", stock: 5, size: "22mm", gender: "OC", tags: "correa"},
+      {code: "P9-27", price: "$29.990", stock: 4, size: "22mm", gender: "OC", tags: "correa"},
+      {code: "P9-28", price: "$29.990", stock: 7, size: "22mm", gender: "P3", tags: "correa"},
+      {code: "PU-34", price: "$29.990", stock: 17, size: "24mm", gender: "Compatible Mod: Universal/Recta", tags: "correa"},
+      {code: "PU-35", price: "$29.990", stock: 11, size: "24mm", gender: "Compatible Mod: Universal/Recta", tags: "correa"},
+      {code: "PY-34", price: "$29.990", stock: 13, size: "22mm", gender: "Compatible Mod: Universal/Recta", tags: "correa"},
+      {code: "PZ-21", price: "$29.990", stock: 18, size: "22mm", gender: "Compatible Mod: Universal/Recta", tags: "correa"},
+      {code: "SJ-21", price: "$29.990", stock: 44, size: "22mm", gender: "Compatible Mod: Universal/Recta", tags: "correa"}
+    ];
+
+    // Función para generar imágenes de placeholder basadas en el código del reloj
+    function generateWatchImageUrl(code) {
+      const baseUrl = "https://placehold.co/400x300/f8fafc/9ca3af";
+      const text = encodeURIComponent(code);
+      return `${baseUrl}?text=${text}&font=monospace`;
+    }
+
+    // Función para renderizar las tarjetas de relojes
+    function renderWatchCards(watches) {
+      const catalogGrid = document.getElementById('catalogoGrid');
+      catalogGrid.innerHTML = '';
+      
+      watches.forEach(watch => {
+        const card = document.createElement('article');
+        card.className = 'card animate__animated animate__fadeIn bg-white rounded-lg shadow-md overflow-hidden';
+        card.setAttribute('data-tags', watch.tags);
+        
+        card.innerHTML = `
+          <a href="#${watch.code}" class="block group" aria-label="Ver detalles ${watch.code}">
+            <div class="card-img">
+              <img src="${generateWatchImageUrl(watch.code)}" alt="${watch.code}" loading="lazy">
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">${watch.code}</h3>
+              <p class="card-meta">${watch.size} · ${watch.gender}</p>
+              <div class="flex justify-between items-center">
+                <span class="font-bold text-amber-700">${watch.price}</span>
+                <span class="text-sm ${watch.stock > 0 ? 'text-green-600' : 'text-red-600'}">
+                  ${watch.stock > 0 ? `${watch.stock} disponibles` : 'Agotado'}
+                </span>
+              </div>
+              <span class="card-cta">Ver detalles</span>
+            </div>
+          </a>
+        `;
+        
+        catalogGrid.appendChild(card);
+      });
+      
+      // Actualizar contador
+      document.getElementById('totalItems').textContent = `Mostrando ${watches.length} modelos`;
+    }
+
+    // Inicializar con todos los relojes
+    renderWatchCards(watchData);
+
+    // Hamburguesa
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Filtros catálogo
+    const filterBtns = document.querySelectorAll('.filter-btn');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+
+        let filteredWatches;
+        if (filter === 'all') {
+          filteredWatches = watchData;
+        } else {
+          filteredWatches = watchData.filter(watch => watch.tags.includes(filter));
+        }
+        
+        renderWatchCards(filteredWatches);
+      });
+    });
+
+    // Modal de detalle
+    const modal = document.getElementById('modelModal');
+    const closeModal = document.getElementById('closeModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalCode = document.getElementById('modalCode');
+    const modalPrice = document.getElementById('modalPrice');
+    const modalMeta = document.getElementById('modalMeta');
+    const modalSize = document.getElementById('modalSize');
+    const modalGender = document.getElementById('modalGender');
+    const modalStock = document.getElementById('modalStock');
+    const whatsappLink = document.getElementById('whatsappLink');
+
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('.card a')) {
+        e.preventDefault();
+        const card = e.target.closest('.card');
+        const code = card.querySelector('.card-title').textContent.trim();
+        const watch = watchData.find(w => w.code === code);
+        
+        if (watch) {
+          modalImg.src = generateWatchImageUrl(watch.code);
+          modalImg.alt = watch.code;
+          modalTitle.textContent = watch.code;
+          modalCode.textContent = `Código: ${watch.code}`;
+          modalPrice.textContent = watch.price;
+          modalMeta.textContent = `${watch.size} · ${watch.gender}`;
+          modalSize.textContent = watch.size;
+          modalGender.textContent = watch.gender;
+          modalStock.textContent = watch.stock > 0 ? `${watch.stock} unidades` : 'Agotado';
+          
+          // Actualizar enlace de WhatsApp con el modelo específico
+          whatsappLink.href = `https://wa.me/56977490064?text=Hola,%20estoy%20interesado%20en%20el%20modelo%20${encodeURIComponent(watch.code)}`;
+
+          modal.classList.remove('hidden');
+          modal.classList.add('flex');
+          document.body.style.overflow = 'hidden';
+        }
+      }
+    });
+
+    // Cerrar modal
+    function closeModalFunc() {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    closeModal.addEventListener('click', closeModalFunc);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModalFunc();
+      }
+    });
+    
+    // Cerrar con tecla Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModalFunc();
+      }
+    });
+  </script>
+</body>
+</html>

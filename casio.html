@@ -1,114 +1,358 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <!-- META BÁSICO -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Catálogo Casio | Relojería ZH</title>
+  <title>Relojería ZH | Catálogo de Relojes en San Felipe</title>
+  <meta name="description" content="Relojería ZH en San Felipe. Catálogo de relojes de lujo: clásicos, deportivos y minimalistas. Reparación y mantenimiento profesional.">
+  <link rel="canonical" href="https://tusitio.cl/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Relojería ZH | Catálogo de Relojes en San Felipe" />
+  <meta property="og:description" content="Catálogo actualizado de relojes. Encuentra tu modelo ideal en Relojería ZH." />
+  <meta property="og:image" content="https://tusitio.cl/img/logo-pro.png" />
+  <meta property="og:url" content="https://tusitio.cl/" />
+
+  <!-- JSON-LD: Negocio local + algunos modelos (catálogo) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"JewelryStore",
+    "name":"Relojería ZH",
+    "image":"https://tusitio.cl/img/logo-pro.png",
+    "url":"https://tusitio.cl/",
+    "address":{"@type":"PostalAddress","addressLocality":"San Felipe","addressRegion":"Valparaíso","addressCountry":"CL"},
+    "geo":{"@type":"GeoCoordinates","latitude":-32.7495647,"longitude":-70.727704},
+    "sameAs":[]
+  }
+  </script>
+
+  <!-- FUENTES -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Roboto&display=swap" rel="stylesheet" />
+
+  <!-- Animate.css (animaciones tipo "bootstrap vibes") -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+  <!-- Swiper (Carrusel) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"/>
+
+  <!-- CSS propio -->
+  <style>
+    .card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    .card-img {
+      overflow: hidden;
+      border-top-left-radius: 0.5rem;
+      border-top-right-radius: 0.5rem;
+    }
+    .card-img img {
+      transition: transform 0.5s ease;
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+    .card:hover .card-img img {
+      transform: scale(1.05);
+    }
+    .card-body {
+      padding: 1.25rem;
+    }
+    .card-title {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #1f2937;
+    }
+    .card-meta {
+      color: #6b7280;
+      font-size: 0.875rem;
+      margin-bottom: 1rem;
+    }
+    .card-cta {
+      color: #d97706;
+      font-weight: 600;
+      font-size: 0.875rem;
+      display: inline-flex;
+      align-items: center;
+    }
+    .card-cta::after {
+      content: "→";
+      margin-left: 0.25rem;
+      transition: transform 0.2s ease;
+    }
+    .card:hover .card-cta::after {
+      transform: translateX(3px);
+    }
+    .filter-btn {
+      transition: all 0.2s ease;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background-color: #fef3c7 !important;
+      color: #92400e !important;
+    }
+  </style>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/logo pro.png" />
 </head>
-<body class="bg-gray-900 text-gray-100 font-['Poppins']">
+<body class="text-gray-900 bg-white selection:bg-yellow-300 selection:text-black">
 
   <!-- HEADER -->
-  <header class="bg-gray-900 border-b border-gray-700">
-    <div class="container mx-auto flex items-center justify-between py-4 px-6">
-      <div class="flex items-center gap-3">
-        <img src="img/logo pro.png" alt="Logo Relojería ZH" class="h-12 w-12 object-contain rounded-full border-2 border-yellow-400 shadow-md" loading="lazy" />
-        <h1 class="text-4xl font-serif font-extrabold text-yellow-400 tracking-wide drop-shadow-lg bg-gradient-to-r from-yellow-400 via-yellow-100 to-yellow-400 bg-clip-text text-transparent">
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 py-3 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group" aria-label="Inicio Relojería ZH">
+        <img src="img/logo pro.png" alt="Logo Relojería ZH" class="h-12 w-12 rounded-full border border-yellow-400 shadow object-cover"/>
+        <span class="text-2xl sm:text-3xl font-bold tracking-wide text-yellow-500 group-hover:text-yellow-400 transition">
           Relojería ZH
-        </h1>
-      </div>
-      <nav aria-label="Navegación principal">
-        <ul class="flex gap-6 text-lg font-medium">
-          <li><a href="index.html" class="hover:text-yellow-400 transition">Inicio</a></li>
-          <li><a href="catalogo-casio.html" class="text-yellow-400 font-semibold">Casio</a></li>
-          <li><a href="index.html#sobre-nosotros" class="hover:text-yellow-400 transition">Nosotros</a></li>
-          <li><a href="index.html#servicios" class="hover:text-yellow-400 transition">Servicios</a></li>
-          <li><a href="index.html#contacto" class="hover:text-yellow-400 transition">Contacto</a></li>
-        </ul>
+        </span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 font-medium">
+        <a href="index.html#inicio" class="hover:text-yellow-500">Inicio</a>
+        <a href="index.html#catalogo" class="hover:text-yellow-500">Catálogo</a>
+        <a href="index.html#colecciones" class="hover:text-yellow-500">Colecciones</a>
+        <a href="index.html#ubicacion" class="hover:text-yellow-500">Ubicación</a>
+        <a href="index.html#contacto" class="hover:text-yellow-500">Contacto</a>
+      </nav>
+      <button id="menuBtn" class="md:hidden text-3xl" aria-label="Abrir menú"><i class="bi bi-list"></i></button>
+    </div>
+    <!-- Menú móvil -->
+    <div id="mobileMenu" class="hidden md:hidden border-t border-gray-100">
+      <nav class="max-w-7xl mx-auto px-4 lg:px-8 py-3 flex flex-col gap-3">
+        <a href="index.html#inicio" class="py-2 hover:text-yellow-500">Inicio</a>
+        <a href="index.html#catalogo" class="py-2 hover:text-yellow-500">Catálogo</a>
+        <a href="index.html#colecciones" class="py-2 hover:text-yellow-500">Colecciones</a>
+        <a href="index.html#ubicacion" class="py-2 hover:text-yellow-500">Ubicación</a>
+        <a href="index.html#contacto" class="py-2 hover:text-yellow-500">Contacto</a>
       </nav>
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="relative w-full h-[40vh] min-h-[250px] flex items-center justify-center overflow-hidden bg-[url('https://relojeando.cl/cdn/shop/files/353436883_676656754475140_9184453992239516042_n.jpg?v=1710881918')] bg-cover bg-center">
-    <div class="absolute inset-0 bg-black bg-opacity-60"></div>
-    <div class="relative z-10 text-center px-4">
-      <h2 class="text-4xl md:text-5xl font-bold text-yellow-400 drop-shadow-lg">Catálogo Casio</h2>
-      <p class="mt-3 text-gray-300 max-w-xl mx-auto">Explora nuestra colección exclusiva de relojes Casio, diseñados para durar y acompañarte en cada momento.</p>
+  <main>
+  
+
+    <!-- COLECCIONES / FILTROS (inspirado en Festina) -->
+    <section id="colecciones" class="max-w-7xl mx-auto px-4 lg:px-8 py-12">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-6">
+        <h2 class="text-3xl font-bold">Colecciones</h2>
+        <div class="text-sm text-gray-500">Catálogo informativo (sin compra en línea)</div>
+      </div>
+      <!-- Filtros de ejemplo -->
+      <div class="flex flex-wrap gap-2 mb-8">
+        <button class="filter-btn px-4 py-2 rounded-full bg-yellow-100 text-yellow-700 font-semibold active" data-filter="all">Todos</button>
+        <button class="filter-btn px-4 py-2 rounded-full bg-gray-100 text-gray-700 font-semibold" data-filter="clasico">Clásico</button>
+        <button class="filter-btn px-4 py-2 rounded-full bg-gray-100 text-gray-700 font-semibold" data-filter="deportivo">Deportivo</button>
+        <button class="filter-btn px-4 py-2 rounded-full bg-gray-100 text-gray-700 font-semibold" data-filter="minimalista">Minimalista</button>
+        <button class="filter-btn px-4 py-2 rounded-full bg-gray-100 text-gray-700 font-semibold" data-filter="automatico">Automático</button>
+      </div>
+    </section>
+
+    <!-- CATÁLOGO DE MODELOS (GRID) -->
+    <section id="catalogo" class="max-w-7xl mx-auto px-4 lg:px-8 pb-16">
+      <div id="catalogoGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+        <!-- Casio 1 -->
+        <article class="card animate__animated animate__fadeIn bg-white rounded-lg shadow-md overflow-hidden" data-tags="clasico acero" data-movimiento="Cuarzo" data-diametro="38 mm" data-resistencia="50 m" data-material="Acero inoxidable">
+          <a href="#casio1" class="block group" aria-label="Ver detalles Casio MTP-V002D">
+            <div class="card-img">
+              <img src="https://www.casio.com/content/dam/casio/product-info/locales/sg/en/timepiece/product/watch/M/MT/MTP/MTP-V002D-2B3/assets/MTP-V002D-2B3_l.jpg.transform/main-visual-sp/image.jpg" alt="Casio MTP-V002D clásico acero" loading="lazy">
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Casio MTP-V002D</h3>
+              <p class="card-meta">Caja de acero · 38 mm · Cuarzo</p>
+              <span class="card-cta">Ver detalles</span>
+            </div>
+          </a>
+        </article>
+
+        <!-- Casio 2 -->
+        <article class="card animate__animated animate__fadeIn bg-white rounded-lg shadow-md overflow-hidden" data-tags="deportivo resina" data-movimiento="Digital" data-diametro="42 mm" data-resistencia="200 m" data-material="Resina">
+          <a href="#casio2" class="block group" aria-label="Ver detalles Casio G-Shock DW-5600">
+            <div class="card-img">
+              <img src="https://www.dandolahora.cl/cdn/shop/products/F-91w-3DG.jpg?v=1565929747&width=900" alt="Casio G-Shock DW-5600 deportivo" loading="lazy">
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Reloj Casio Vintage F-91W-3DG Clásico Líneas Verdes</h3>
+              <p class="card-meta">Shock Resist · 200 m WR · Resina</p>
+              <span class="card-cta">Ver detalles</span>
+            </div>
+          </a>
+        </article>
+
+        <!-- Resto de artículos con datos específicos... -->
+
+      </div>
+    </section>
+
+    <!-- MODAL DETALLE MODELO (mejorado) -->
+    <div id="modelModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+      <div class="absolute inset-0 bg-black/60"></div>
+      <div class="relative bg-white rounded-xl shadow-2xl max-w-2xl w-full overflow-hidden animate__animated animate__fadeInUp">
+        <button id="closeModal" class="absolute top-3 right-3 text-2xl text-gray-500 hover:text-gray-900 z-10" aria-label="Cerrar detalle">
+          <i class="bi bi-x-lg"></i>
+        </button>
+        <div class="grid md:grid-cols-2">
+          <div class="aspect-square bg-gray-50 flex items-center justify-center p-4">
+            <img id="modalImg" src="" alt="Imagen del modelo" class="max-h-[420px] object-contain">
+          </div>
+          <div class="p-6">
+            <h3 id="modalTitle" class="text-2xl font-bold mb-2">Modelo</h3>
+            <p id="modalMeta" class="text-gray-600 mb-4">Especificaciones</p>
+            <ul class="space-y-2 text-sm">
+              <li class="flex items-center"><i class="bi bi-gear mr-2 text-yellow-500"></i> Movimiento: <span id="modalMov" class="ml-1 font-medium">Cuarzo</span></li>
+              <li class="flex items-center"><i class="bi bi-rulers mr-2 text-yellow-500"></i> Diámetro: <span id="modalDiam" class="ml-1 font-medium">40 mm</span></li>
+              <li class="flex items-center"><i class="bi bi-droplet mr-2 text-yellow-500"></i> Resistencia al agua: <span id="modalWR" class="ml-1 font-medium">50 m</span></li>
+              <li class="flex items-center"><i class="bi bi-box mr-2 text-yellow-500"></i> Material: <span id="modalMat" class="ml-1 font-medium">Acero</span></li>
+            </ul>
+            <div class="mt-6 pt-4 border-t border-gray-100">
+              <p class="text-sm text-gray-500 mb-2">¿Te interesa este modelo?</p>
+              <a href="https://wa.me/56912345678?text=Hola,%20estoy%20interesado%20en%20el%20modelo%20" id="whatsappLink" target="_blank" class="inline-flex items-center px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg transition">
+                <i class="bi bi-whatsapp mr-2"></i> Consultar por WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </section>
 
-  <!-- CATÁLOGO -->
-  <main class="container mx-auto px-6 py-12">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-      
-      <!-- Producto 1 -->
-      <div class="bg-gray-800 rounded-lg shadow-lg p-5 hover:shadow-2xl transition cursor-pointer">
-        <img src="https://relojeando.cl/cdn/shop/products/Casio-DW-5600E-1V_1200x1200.jpg?v=1642740408" alt="Casio DW-5600E" class="rounded-lg mb-4" loading="lazy" />
-        <h3 class="text-yellow-400 text-xl font-semibold mb-2">Casio DW-5600E</h3>
-        <p class="text-gray-300 mb-3">Clásico y resistente, con cronómetro y luz LED.</p>
-        <span class="text-yellow-500 font-bold text-lg">$45.990 CLP</span>
-      </div>
-
-      <!-- Producto 2 -->
-      <div class="bg-gray-800 rounded-lg shadow-lg p-5 hover:shadow-2xl transition cursor-pointer">
-        <img src="https://relojeando.cl/cdn/shop/products/Casio-GA-2100-1A1_1200x1200.jpg?v=1642740523" alt="Casio GA-2100" class="rounded-lg mb-4" loading="lazy" />
-        <h3 class="text-yellow-400 text-xl font-semibold mb-2">Casio GA-2100</h3>
-        <p class="text-gray-300 mb-3">Estilo moderno con diseño resistente a golpes.</p>
-        <span class="text-yellow-500 font-bold text-lg">$69.990 CLP</span>
-      </div>
-
-      <!-- Producto 3 -->
-      <div class="bg-gray-800 rounded-lg shadow-lg p-5 hover:shadow-2xl transition cursor-pointer">
-        <img src="https://relojeando.cl/cdn/shop/products/Casio-AQ-S810W_1200x1200.jpg?v=1642740341" alt="Casio AQ-S810W" class="rounded-lg mb-4" loading="lazy" />
-        <h3 class="text-yellow-400 text-xl font-semibold mb-2">Casio AQ-S810W</h3>
-        <p class="text-gray-300 mb-3">Reloj solar con diseño clásico y funcionalidad.</p>
-        <span class="text-yellow-500 font-bold text-lg">$39.990 CLP</span>
-      </div>
-
-      <!-- Producto 4 -->
-      <div class="bg-gray-800 rounded-lg shadow-lg p-5 hover:shadow-2xl transition cursor-pointer">
-        <img src="https://relojeando.cl/cdn/shop/products/Casio-F91W_1200x1200.jpg?v=1642740229" alt="Casio F91W" class="rounded-lg mb-4" loading="lazy" />
-        <h3 class="text-yellow-400 text-xl font-semibold mb-2">Casio F91W</h3>
-        <p class="text-gray-300 mb-3">Icono de sencillez y eficiencia desde 1989.</p>
-        <span class="text-yellow-500 font-bold text-lg">$15.990 CLP</span>
-      </div>
-
-      <!-- Producto 5 -->
-      <div class="bg-gray-800 rounded-lg shadow-lg p-5 hover:shadow-2xl transition cursor-pointer">
-        <img src="https://relojeando.cl/cdn/shop/products/Casio-Edifice-EFR-552D_1200x1200.jpg?v=1642740490" alt="Casio Edifice EFR-552D" class="rounded-lg mb-4" loading="lazy" />
-        <h3 class="text-yellow-400 text-xl font-semibold mb-2">Casio Edifice EFR-552D</h3>
-        <p class="text-gray-300 mb-3">Elegancia deportiva con cronógrafo y fecha.</p>
-        <span class="text-yellow-500 font-bold text-lg">$89.990 CLP</span>
-      </div>
-
-      <!-- Producto 6 -->
-      <div class="bg-gray-800 rounded-lg shadow-lg p-5 hover:shadow-2xl transition cursor-pointer">
-        <img src="https://relojeando.cl/cdn/shop/products/Casio-MTP-V002D_1200x1200.jpg?v=1642740480" alt="Casio MTP-V002D" class="rounded-lg mb-4" loading="lazy" />
-        <h3 class="text-yellow-400 text-xl font-semibold mb-2">Casio MTP-V002D</h3>
-        <p class="text-gray-300 mb-3">Diseño clásico para uso diario con correa metálica.</p>
-        <span class="text-yellow-500 font-bold text-lg">$34.990 CLP</span>
-      </div>
-
-    </div>
+    
   </main>
 
+  <!-- FOOTER -->
+  <footer class="border-t border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 lg:px-8 py-8 text-center text-sm text-gray-500">
+      © 2025 Relojería ZH — Catálogo informativo. Todos los derechos reservados SseketuDev & Hasse.
+    </div>
+  </footer>
+
+  <!-- Botón flotante WhatsApp -->
+  <a href="https://wa.me/56912345678" target="_blank" rel="noopener"
+    class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white rounded-full shadow-lg p-4 flex items-center justify-center animate__animated animate__bounceIn"
+    aria-label="Contáctanos por WhatsApp">
+    <i class="bi bi-whatsapp text-2xl"></i>
+  </a>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+  <!-- JS: menú, carrusel, filtros y modal -->
+  <script>
+    // Hamburguesa
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Swiper Hero (si existe)
+    if (document.querySelector('.heroSwiper')) {
+      const heroSwiper = new Swiper('.heroSwiper', {
+        loop: true,
+        speed: 900,
+        effect: 'fade',
+        fadeEffect: { crossFade: true },
+        autoplay: { delay: 4200, disableOnInteraction: false },
+        pagination: { el: '.swiper-pagination', clickable: true },
+        navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }
+      });
+    }
+
+    // Filtros catálogo
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+
+        cards.forEach(card => {
+          const tags = card.getAttribute('data-tags');
+          // Mostrar todos si es "all", si no, filtrar por palabra clave
+          const show = filter === 'all' || tags.includes(filter);
+          card.style.display = show ? '' : 'none';
+        });
+      });
+    });
+
+    // Modal de detalle (mejorado)
+    const modal = document.getElementById('modelModal');
+    const closeModal = document.getElementById('closeModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalMeta = document.getElementById('modalMeta');
+    const modalMov = document.getElementById('modalMov');
+    const modalDiam = document.getElementById('modalDiam');
+    const modalWR = document.getElementById('modalWR');
+    const modalMat = document.getElementById('modalMat');
+    const whatsappLink = document.getElementById('whatsappLink');
+
+    document.querySelectorAll('#catalogo .card a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const card = link.closest('.card');
+        const img = card.querySelector('img').getAttribute('src');
+        const title = card.querySelector('.card-title').textContent.trim();
+        const meta = card.querySelector('.card-meta').textContent.trim();
+        
+        // Obtener datos específicos de los atributos data
+        const movimiento = card.getAttribute('data-movimiento') || 'Cuarzo';
+        const diametro = card.getAttribute('data-diametro') || '40 mm';
+        const resistencia = card.getAttribute('data-resistencia') || '50 m';
+        const material = card.getAttribute('data-material') || 'Acero';
+
+        modalImg.src = img;
+        modalImg.alt = title;
+        modalTitle.textContent = title;
+        modalMeta.textContent = meta;
+        modalMov.textContent = movimiento;
+        modalDiam.textContent = diametro;
+        modalWR.textContent = resistencia;
+        modalMat.textContent = material;
+        
+        // Actualizar enlace de WhatsApp con el modelo específico
+        whatsappLink.href = `https://wa.me/56912345678?text=Hola,%20estoy%20interesado%20en%20el%20modelo%20${encodeURIComponent(title)}`;
+
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        document.body.style.overflow = 'hidden'; // Prevenir scroll
+      });
+    });
+
+    // Cerrar modal
+    function closeModalFunc() {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = ''; // Restaurar scroll
+    }
+
+    closeModal.addEventListener('click', closeModalFunc);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModalFunc();
+      }
+    });
+    
+    // Cerrar con tecla Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModalFunc();
+      }
+    });
+  </script>
 </body>
 </html>
-<script>
-  // Tailwind CSS configuration
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          'yellow-400': '#FBBF24',
-          'yellow-500': '#D97706',
-          'gray-800': '#1F2937',
-          'gray-900': '#111827',
-          'gray-100': '#F3F4F6',
-        },
-      },
-    },
-  };
-</script>
+  <!-- Bootstrap Icons JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.js"></script>
